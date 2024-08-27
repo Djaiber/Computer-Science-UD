@@ -42,8 +42,8 @@ void capturafile(Automovil *autos, int n) {
     for (int i = 0; i < n; i++) {
         // Leer datos del archivo en la estructura
         fscanf(archivo, "%6s", autos[i].placa); // Leer placa (6 caracteres + terminador nulo)
-        fscanf(archivo, "%d", &autos[i].costo); // Leer costo
-        fscanf(archivo, "%d", &autos[i].serial); // Leer serial
+        fscanf(archivo, "%i", &autos[i].costo); // Leer costo
+        fscanf(archivo, "%i", &autos[i].serial); // Leer serial
     }
     
     fclose(archivo); // Cerrar el archivo
