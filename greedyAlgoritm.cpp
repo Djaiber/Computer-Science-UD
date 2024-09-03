@@ -30,7 +30,6 @@ void seleccionarEventos(Evento eventos[], int n) {
     int i = 0;
     printf("%i\t%i\t%i\n", eventos[i].id, eventos[i].inicio, eventos[i].fin);
 
-    // Considerar los siguientes eventos
     for (int j = 1; j < n; j++) {
         // Si este evento empieza después de que el último seleccionado terminó, seleccionarlo
         if (eventos[j].inicio >= eventos[i].fin) {
@@ -44,7 +43,6 @@ int main() {
     Evento eventos[100]; // Asumiendo que no habrá más de 100 eventos
     int n = 0;
 
-    // Abrir el archivo "eventos.txt" para lectura
     FILE *file = fopen("eventos1.txt", "r");
     if (file == NULL) {
         printf("No se pudo abrir el archivo eventos.txt\n");
@@ -55,11 +53,8 @@ int main() {
     while (fscanf(file, "%i,%i,%i", &eventos[n].id, &eventos[n].inicio, &eventos[n].fin) != EOF) {
         n++;
     }
-
-    // Cerrar el archivo
     fclose(file);
 
-    // Seleccionar eventos que no se superpongan
     seleccionarEventos(eventos, n);
 
     return 0;
