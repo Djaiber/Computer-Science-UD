@@ -50,7 +50,7 @@ int main() {
     }
 
     // Leer cada línea del archivo y almacenar los datos en el array de eventos
-    while (fscanf(file, "%i,%i,%i", &eventos[n].id, &eventos[n].inicio, &eventos[n].fin) != EOF) {
+    while (fscanf(file, "%i,%i,%i", &eventos[n].id, &eventos[n].inicio, &eventos[n].fin) == 3) {
         n++;
     }
     fclose(file);
