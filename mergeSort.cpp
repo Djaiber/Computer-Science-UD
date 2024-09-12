@@ -1,9 +1,3 @@
-/*
-Nombre: JAIBER DUVAN DIAZ LEON
-Código: 20222020011
-Grupo: 020-84
-*/
-
 #include <stdio.h>
 
 
@@ -11,7 +5,8 @@ Grupo: 020-84
 void capturafile(int*, int);
 void muestra(int*, int);
 void swap(int*, int*);
-void quicksort(int*, int, int);
+void mergeSort(int*, int, int);
+
 
 
 int main() {
@@ -21,7 +16,7 @@ int main() {
     scanf("%i", &n);
     datos = new int[n];
     capturafile(datos, n);
-    quicksort(datos, 0, n - 1);
+    mergeSort(datos, 0, n - 1);
  	muestra(datos, n);
  	
     delete[] datos; // Liberamos la memoria reservada
@@ -54,7 +49,7 @@ void swap(int* a, int* b) {
     *b = aux;
 }
 
-void quicksort(int* datos, int ini, int fin) {
+void mergeSort(int* datos, int ini, int fin) {
     if (ini >= fin) {
         return; 
     }
@@ -82,6 +77,4 @@ void quicksort(int* datos, int ini, int fin) {
             j--;
         }
     }
-    quicksort(datos, ini, j); // Parte izquierda
-    quicksort(datos, i, fin); // Parte derecha
 }

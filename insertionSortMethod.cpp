@@ -1,3 +1,10 @@
+/*
+Nombre: JAIBER DUVAN DIAZ LEON
+Código: 20222020011
+Grupo: 020-84
+*/
+
+
 #include <stdio.h>
 
 void capturafile(int*, int);
