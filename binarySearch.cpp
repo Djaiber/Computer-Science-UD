@@ -5,21 +5,20 @@
 
 using namespace std;
 
-// Estructura para almacenar los datos de una persona
 struct Persona {
     int cedula;
     char nombre[15];
     char apellido[15];
 };
 
-// Función para comparar personas por su cédula (necesaria para la búsqueda binaria)
+// Comparar personas por su cédula 
 int compararCedula(const void *a, const void *b) {
     Persona *p1 = (Persona *)a;
     Persona *p2 = (Persona *)b;
     return (p1->cedula - p2->cedula);
 }
 
-// Función que realiza la búsqueda binaria
+// Realiza la búsqueda binaria
 int busquedaBinaria(Persona *personas, int izquierda, int derecha, int cedulaBuscada) {
     while (izquierda <= derecha) {
         int medio = izquierda + (derecha - izquierda) / 2;
@@ -61,7 +60,7 @@ int main() {
     cout << "Ingrese el número de cédula a buscar: ";
     cin >> cedulaBuscada;
 
-    // Realizar la búsqueda binaria
+
     int indice = busquedaBinaria(personas, 0, i - 1, cedulaBuscada);
 
     if (indice != -1) {
