@@ -95,7 +95,7 @@ void muestra_nodo(struct Nodo *nodo)
 
 void guardarDatos(TipoLista lista, int n)
 {
-    FILE *archivo = fopen("Datos.txt", "w");
+    FILE *archivo = fopen("DatosPersona.txt", "w");
     if (archivo == NULL)
     {
         printf("Error al abrir el archivo para escritura.\n");
@@ -105,10 +105,8 @@ void guardarDatos(TipoLista lista, int n)
     struct Nodo *actual = lista;
     fprintf(archivo, "Total de registros: %d\n\n", n);
     
-    int contador = 1;
     while (actual != NULL)
-    {
-        fprintf(archivo, "Registro #%d\n", contador++);
+    {   
         fprintf(archivo, "Cedula: %d\n", actual->dato.cedula);
         fprintf(archivo, "Nombre: %s\n", actual->dato.nombre);
         fprintf(archivo, "Saldo: %.2f\n", actual->dato.saldo);
@@ -117,5 +115,5 @@ void guardarDatos(TipoLista lista, int n)
     }
     
     fclose(archivo);
-    printf("\nDatos guardados exitosamente en 'Datos.txt'\n");
+    printf("\nDatos guardados exitosamente en 'DatosPersona.txt'\n");
 }

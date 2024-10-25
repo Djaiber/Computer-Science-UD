@@ -1,0 +1,14 @@
+Total de registros: 3
+
+Cedula: 90894
+Nombre: Lorena
+Saldo: 23000.00
+------------------------
+Cedula: 22222
+Nombre: Astid
+Saldo: 5000.00
+------------------------
+Cedula: 2323
+Nombre: Jorge
+Saldo: 4000.00
+------------------------
