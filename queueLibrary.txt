@@ -1,0 +1,80 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+// Define a custom class for the data structure
+class Sc {
+private:
+    queue<int> q;  // Queue to hold the elements
+
+public:
+    // Constructor
+    Sc() {}
+
+    // Enqueue an element to the queue
+    void enqueue(int x) {
+        q.push(x);
+    }
+
+    // Dequeue an element from the queue
+    void dequeue() {
+        if (!q.empty()) {
+            q.pop();
+        } else {
+            cout << "Queue is empty!" << endl;
+        }
+    }
+
+    // Get the front element of the queue
+    int front() {
+        if (!q.empty()) {
+            return q.front();
+        } else {
+            cout << "Queue is empty!" << endl;
+            return -1;  // Return -1 if the queue is empty (could be an error value)
+        }
+    }
+
+    // Check if the queue is empty
+    bool isEmpty() {
+        return q.empty();
+    }
+
+    // Get the size of the queue
+    int size() {
+        return q.size();
+    }
+
+    // Display all elements of the queue
+    void display() {
+        queue<int> temp = q;  // Create a temporary queue to avoid modifying the original queue
+        cout << "Queue elements: ";
+        while (!temp.empty()) {
+            cout << temp.front() << " ";
+            temp.pop();
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    // Create an instance of the Sc class
+    Sc sc;
+
+    // Perform some operations
+    sc.enqueue(10);
+    sc.enqueue(20);
+    sc.enqueue(30);
+
+    sc.display();  // Display queue contents
+
+    cout << "Front element: " << sc.front() << endl;  // Show the front element
+
+    sc.dequeue();  // Dequeue the front element
+    sc.display();  // Display queue contents again
+
+    cout << "Queue size: " << sc.size() << endl;  // Show the queue size
+
+    return 0;
+}
