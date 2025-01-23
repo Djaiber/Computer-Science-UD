@@ -7,33 +7,35 @@ struct Nodo {
     int dato; // Dato o valor
     struct Nodo *izq; // Apuntador al siguiente elemento de la lista
     struct Nodo *der; // Apuntador al elemento anterior de la lista
-
 };
-
-Nodo *arbol = NULL;
-
+Nodo *arbol = NULL;// nodo raiz inicial
 Nodo *crearNodo(int);
 void insertarNodo(Nodo *&, int);
 void mostrarArbol(Nodo *, int);
+bool busqueda (Nodo *, int, int);
 
 int main() {
 
-    int dato, cont;
+    int dato, count, contador=0, valor, nivel=1;
     cout << "Digite cuantos nodos desea ingresar: ";
-    cin >> cont;
+    cin >> count;
 
-    for (int i = 0; i < cont; i++) {
+    for (int i = 0; i < count; i++) {
         int counter = i;
         cout << "Digite el dato a guardar en un nodo "<< counter+1 << ":";
         cin >> dato;
         insertarNodo(arbol, dato);
     }
-
     cout << "Mostrando arbol: " << endl;
 
     mostrarArbol(arbol, 0);
-
-    return 0;
+    mostrarArbol(arbol, contador);
+    cout<<"Ingrese el valor que desea buscar: "<<endl;
+    cin>>valor;
+    if(busqueda(arbol,valor, nivel))
+        cout<<"El valor fue encontrado"<<endl;
+    else
+        cout<<"el valor NO fue encontrado"<<endl;
 
 }
 
@@ -52,15 +54,17 @@ void insertarNodo(Nodo *&arbol, int n) {
     if (arbol == NULL) { // Si el arbol está vacío
         Nodo *nuevo_nodo = crearNodo(n);
         arbol = nuevo_nodo;
-
     } else {
 
         int valorRaiz = arbol->dato; // Obtenemos el valor raíz
 
         if (n < valorRaiz) {
             insertarNodo(arbol->izq, n);
-        } else {
+        } else if (n> valorRaiz){
             insertarNodo(arbol->der, n);
+        }
+        else{
+            cout<<"GRAVES, Se repite dato"<<endl;
         }
     }
 }
@@ -79,3 +83,26 @@ void mostrarArbol(Nodo *arbol, int cont) {
     }
 
 }
+
+bool busqueda(Nodo *arbol, int valor, int nivel)
+{
+    if(arbol == NULL)
+        return false;
+    else
+    {
+        if(arbol -> dato == valor){
+            cout << "Nivel: "<<nivel<<endl;
+            return true;
+        }
+        else
+        {
+            if(valor<arbol -> dato){
+                return busqueda(arbol -> izq, valor, nivel+1);}
+            else
+            {
+                return busqueda(arbol -> der, valor, nivel+1);
+            }
+        }
+    }
+}
+
