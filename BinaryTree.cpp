@@ -23,8 +23,8 @@ int main() {
     cin >> cont;
 
     for (int i = 0; i < cont; i++) {
-
-        cout << "Digite el dato a guardar en un nodo: ";
+        int counter = i;
+        cout << "Digite el dato a guardar en un nodo "<< counter+1 << ":";
         cin >> dato;
         insertarNodo(arbol, dato);
     }
