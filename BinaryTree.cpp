@@ -8,36 +8,57 @@ struct Nodo {
     struct Nodo *izq; // Apuntador al siguiente elemento de la lista
     struct Nodo *der; // Apuntador al elemento anterior de la lista
 };
-Nodo *arbol = NULL;// nodo raiz inicial
+// Declaración de funciones
 Nodo *crearNodo(int);
 void insertarNodo(Nodo *&, int);
 void mostrarArbol(Nodo *, int);
-bool busqueda (Nodo *, int, int);
+bool busqueda(Nodo *, int, int);
+void preOrden(Nodo *);
+void inOrden(Nodo *);
+void postOrden(Nodo *);
+
+// Nodo raíz inicial
+Nodo *arbol = NULL;
 
 int main() {
+    int dato, count, contador = 0, valor, nivel = 1;
+    Nodo *arbol = NULL; // Inicializamos el árbol vacío
 
-    int dato, count, contador=0, valor, nivel=1;
     cout << "Digite cuantos nodos desea ingresar: ";
     cin >> count;
 
     for (int i = 0; i < count; i++) {
-        int counter = i;
-        cout << "Digite el dato a guardar en un nodo "<< counter+1 << ":";
+        cout << "Digite el dato a guardar en el nodo " << i + 1 << ": ";
         cin >> dato;
         insertarNodo(arbol, dato);
     }
-    cout << "Mostrando arbol: " << endl;
 
+    cout << "\nMostrando árbol:" << endl;
     mostrarArbol(arbol, 0);
-    mostrarArbol(arbol, contador);
-    cout<<"Ingrese el valor que desea buscar: "<<endl;
-    cin>>valor;
-    if(busqueda(arbol,valor, nivel))
-        cout<<"El valor fue encontrado"<<endl;
-    else
-        cout<<"el valor NO fue encontrado"<<endl;
 
+    cout << "\nRecorrido en Preorden: ";
+    preOrden(arbol);
+    cout << endl;
+
+    cout << "Recorrido en Inorden: ";
+    inOrden(arbol);
+    cout << endl;
+
+    cout << "Recorrido en Postorden: ";
+    postOrden(arbol);
+    cout << endl;
+
+    cout << "\nIngrese el valor que desea buscar: ";
+    cin >> valor;
+    
+    if (busqueda(arbol, valor, nivel))
+        cout << "El valor fue encontrado" << endl;
+    else
+        cout << "El valor NO fue encontrado" << endl;
+
+    return 0;
 }
+
 
 Nodo *crearNodo(int n) {
 
@@ -67,6 +88,36 @@ void insertarNodo(Nodo *&arbol, int n) {
             cout<<"GRAVES, Se repite dato"<<endl;
         }
     }
+}
+void preOrden(Nodo * arbol)
+{
+    if(arbol == NULL) // Si está vacío
+        return;
+    else
+    {
+        cout << arbol->dato << " - ";
+        preOrden(arbol->izq);
+        preOrden(arbol->der);
+    }
+}
+void inOrden(Nodo * arbol)
+{
+    if (arbol == NULL) // Si el árbol está vacío
+        return;
+    
+    inOrden(arbol->izq);         // Recorre el subárbol izquierdo
+    cout << arbol->dato << " - "; // Visita la raíz
+    inOrden(arbol->der);         // Recorre el subárbol derecho
+}
+
+void postOrden(Nodo * arbol)
+{
+    if (arbol == NULL) // Si el árbol está vacío
+        return;
+    
+    postOrden(arbol->izq);       // Recorre el subárbol izquierdo
+    postOrden(arbol->der);       // Recorre el subárbol derecho
+    cout << arbol->dato << " - "; // Visita la raíz
 }
 
 void mostrarArbol(Nodo *arbol, int cont) {
